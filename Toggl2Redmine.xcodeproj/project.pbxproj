@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A321C6762410173000DD6EAF /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6752410173000DD6EAF /* URLRequest.swift */; };
+		A321C6782410178800DD6EAF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6772410178800DD6EAF /* Request.swift */; };
+		A321C67D2410188F00DD6EAF /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C67C2410188F00DD6EAF /* Credentials.swift */; };
+		A321C684241018DD00DD6EAF /* TogglEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C683241018DD00DD6EAF /* TogglEntry.swift */; };
+		A321C6882410195E00DD6EAF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6872410195E00DD6EAF /* Helpers.swift */; };
+		A321C68A24101AB000DD6EAF /* RedmineEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C68924101AB000DD6EAF /* RedmineEntry.swift */; };
+		A321C68F2410433A00DD6EAF /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C68E2410433A00DD6EAF /* Future.swift */; };
+		A321C6912410438900DD6EAF /* URLSession+Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6902410438900DD6EAF /* URLSession+Future.swift */; };
+		A3E7619E240EC3C60088EFB0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E7619D240EC3C60088EFB0 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A3E76198240EC3C60088EFB0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A321C6752410173000DD6EAF /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		A321C6772410178800DD6EAF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		A321C67C2410188F00DD6EAF /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		A321C683241018DD00DD6EAF /* TogglEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglEntry.swift; sourceTree = "<group>"; };
+		A321C6872410195E00DD6EAF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		A321C68924101AB000DD6EAF /* RedmineEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedmineEntry.swift; sourceTree = "<group>"; };
+		A321C68E2410433A00DD6EAF /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		A321C6902410438900DD6EAF /* URLSession+Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Future.swift"; sourceTree = "<group>"; };
+		A3E7619A240EC3C60088EFB0 /* Toggl2Redmine */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Toggl2Redmine; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3E7619D240EC3C60088EFB0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A3E76197240EC3C60088EFB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A321C6742410172400DD6EAF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A321C6752410173000DD6EAF /* URLRequest.swift */,
+				A321C6902410438900DD6EAF /* URLSession+Future.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A321C67E241018B400DD6EAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A321C68924101AB000DD6EAF /* RedmineEntry.swift */,
+				A321C683241018DD00DD6EAF /* TogglEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A3E76191240EC3C60088EFB0 = {
+			isa = PBXGroup;
+			children = (
+				A3E7619C240EC3C60088EFB0 /* Toggl2Redmine */,
+				A3E7619B240EC3C60088EFB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A3E7619B240EC3C60088EFB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3E7619A240EC3C60088EFB0 /* Toggl2Redmine */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3E7619C240EC3C60088EFB0 /* Toggl2Redmine */ = {
+			isa = PBXGroup;
+			children = (
+				A321C6742410172400DD6EAF /* Extensions */,
+				A321C67E241018B400DD6EAF /* Models */,
+				A321C67C2410188F00DD6EAF /* Credentials.swift */,
+				A321C68E2410433A00DD6EAF /* Future.swift */,
+				A321C6872410195E00DD6EAF /* Helpers.swift */,
+				A321C6772410178800DD6EAF /* Request.swift */,
+				A3E7619D240EC3C60088EFB0 /* main.swift */,
+			);
+			path = Toggl2Redmine;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3E76199240EC3C60088EFB0 /* Toggl2Redmine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3E761A1240EC3C60088EFB0 /* Build configuration list for PBXNativeTarget "Toggl2Redmine" */;
+			buildPhases = (
+				A3E76196240EC3C60088EFB0 /* Sources */,
+				A3E76197240EC3C60088EFB0 /* Frameworks */,
+				A3E76198240EC3C60088EFB0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Toggl2Redmine;
+			productName = Toggl2Redmine;
+			productReference = A3E7619A240EC3C60088EFB0 /* Toggl2Redmine */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3E76192240EC3C60088EFB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Lukáš Hromadník";
+				TargetAttributes = {
+					A3E76199240EC3C60088EFB0 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = A3E76195240EC3C60088EFB0 /* Build configuration list for PBXProject "Toggl2Redmine" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A3E76191240EC3C60088EFB0;
+			productRefGroup = A3E7619B240EC3C60088EFB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3E76199240EC3C60088EFB0 /* Toggl2Redmine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3E76196240EC3C60088EFB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3E7619E240EC3C60088EFB0 /* main.swift in Sources */,
+				A321C6782410178800DD6EAF /* Request.swift in Sources */,
+				A321C6882410195E00DD6EAF /* Helpers.swift in Sources */,
+				A321C6912410438900DD6EAF /* URLSession+Future.swift in Sources */,
+				A321C67D2410188F00DD6EAF /* Credentials.swift in Sources */,
+				A321C68A24101AB000DD6EAF /* RedmineEntry.swift in Sources */,
+				A321C68F2410433A00DD6EAF /* Future.swift in Sources */,
+				A321C6762410173000DD6EAF /* URLRequest.swift in Sources */,
+				A321C684241018DD00DD6EAF /* TogglEntry.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A3E7619F240EC3C60088EFB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A3E761A0240EC3C60088EFB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A3E761A2240EC3C60088EFB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A3E761A3240EC3C60088EFB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3E76195240EC3C60088EFB0 /* Build configuration list for PBXProject "Toggl2Redmine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3E7619F240EC3C60088EFB0 /* Debug */,
+				A3E761A0240EC3C60088EFB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3E761A1240EC3C60088EFB0 /* Build configuration list for PBXNativeTarget "Toggl2Redmine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3E761A2240EC3C60088EFB0 /* Debug */,
+				A3E761A3240EC3C60088EFB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A3E76192240EC3C60088EFB0 /* Project object */;
+}
