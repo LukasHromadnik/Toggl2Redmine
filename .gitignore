@@ -147,8 +147,8 @@ xcuserdata
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 /*.gcno
-*.xcworkspace/
-xcuserdata/
+*/project.xcworkspace/*
+xcuserdata/*
 *.xcuserstate
 
 ### Xcode Patch ###
