@@ -6,6 +6,9 @@ import PackageDescription
 let package = Package(
     name: "Toggl2Redmine",
     platforms: [.macOS(.v10_12)],
+    products: [
+        .executable(name: "t2r", targets: ["Toggl2Redmine"])
+    ],
     targets: [
         .target(
             name: "Toggl2Redmine",
