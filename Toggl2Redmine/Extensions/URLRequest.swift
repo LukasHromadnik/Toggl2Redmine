@@ -22,8 +22,11 @@ extension URLRequest {
         setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
     }
 
+    /// Sets the `httpBody` of the request from the given dictionary
+    ///
+    /// - Parameters:
+    ///   - body: Dictionary that is converted as a JSON to `httpBody`
     mutating func setJSONBody(_ body: [String: Any]) {
         httpBody = try! JSONSerialization.data(withJSONObject: body)
     }
-
 }
