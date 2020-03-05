@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A321C6762410173000DD6EAF /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6752410173000DD6EAF /* URLRequest.swift */; };
-		A321C6782410178800DD6EAF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6772410178800DD6EAF /* Request.swift */; };
 		A321C67D2410188F00DD6EAF /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C67C2410188F00DD6EAF /* Credentials.swift */; };
 		A321C684241018DD00DD6EAF /* TogglEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C683241018DD00DD6EAF /* TogglEntry.swift */; };
 		A321C6882410195E00DD6EAF /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321C6872410195E00DD6EAF /* Helpers.swift */; };
@@ -32,7 +31,6 @@
 
 /* Begin PBXFileReference section */
 		A321C6752410173000DD6EAF /* URLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
-		A321C6772410178800DD6EAF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		A321C67C2410188F00DD6EAF /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		A321C683241018DD00DD6EAF /* TogglEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglEntry.swift; sourceTree = "<group>"; };
 		A321C6872410195E00DD6EAF /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				A321C67C2410188F00DD6EAF /* Credentials.swift */,
 				A321C68E2410433A00DD6EAF /* Future.swift */,
 				A321C6872410195E00DD6EAF /* Helpers.swift */,
-				A321C6772410178800DD6EAF /* Request.swift */,
 				A3E7619D240EC3C60088EFB0 /* main.swift */,
 			);
 			path = Toggl2Redmine;
@@ -161,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E7619E240EC3C60088EFB0 /* main.swift in Sources */,
-				A321C6782410178800DD6EAF /* Request.swift in Sources */,
 				A321C6882410195E00DD6EAF /* Helpers.swift in Sources */,
 				A321C6912410438900DD6EAF /* URLSession+Future.swift in Sources */,
 				A321C67D2410188F00DD6EAF /* Credentials.swift in Sources */,
