@@ -19,7 +19,7 @@ You have to obtain your access tokens for Redmine and Toggl. Then create a file 
 ### Using [mint](https://github.com/yonaskolb/mint)
 
 ```bash
-$ mint install AckeeCZ/tapestry
+$ mint install LukasHromadnik/Toggl2Redmine
 ```
 
 ### Using Swift directly
