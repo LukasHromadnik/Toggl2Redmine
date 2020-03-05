@@ -16,6 +16,22 @@ You have to obtain your access tokens for Redmine and Toggl. Then create a file 
 
 ## Instalation and usage
 
+### Using [mint](https://github.com/yonaskolb/mint)
+
+```bash
+$ mint install AckeeCZ/tapestry
+```
+
+### Using Swift directly
+
+```bash
+$ git clone https://github.com/LukasHromadnik/Toggl2Redmine.git
+$ cd Toggl2Redmine
+$ swift run t2r
+```
+
+### Binary
+
 You can copy the binary to some directory in your `$PATH`, then you can run the application from Terminal.
 
 If you are not a fan of Terminal, just copy the binary to some place where it'll be easy to find. If you want to use it, just double-click it.
