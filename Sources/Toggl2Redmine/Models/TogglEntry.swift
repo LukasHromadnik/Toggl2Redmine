@@ -44,6 +44,6 @@ extension TogglEntry {
     }
 
     var isValid: Bool {
-        issueID != nil && tags.contains(kSynchronizedTag) == false
+        issueID != nil && tags.contains(kSynchronizedTag) == false && duration > 0
     }
 }
