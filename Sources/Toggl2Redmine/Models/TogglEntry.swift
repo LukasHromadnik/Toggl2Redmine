@@ -22,7 +22,8 @@ extension TogglEntry: Codable {
     init(from decoder: Decoder) throws {
         let container = try! decoder.container(keyedBy: CodingKeys.self)
         id = try! container.decode(Int.self, forKey: .id)
-        description = try! container.decode(String.self, forKey: .description)
+        let description = try! container.decodeIfPresent(String.self, forKey: .description)
+        self.description = description ?? ""
         start = try! container.decode(Date.self, forKey: .start)
         duration = try! container.decode(Int.self, forKey: .duration)
         let tags = try! container.decodeIfPresent([String].self, forKey: .tags)
