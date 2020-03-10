@@ -4,6 +4,10 @@ Please, check out guidelines: https://keepachangelog.com/en/1.0.0/
 
 ## Next
 
+### 0.3.0
+
+- Fix issue where currently running Toggl's entry is marked as synchronized https://github.com/LukasHromadnik/Toggl2Redmine/issues/4 by @LukasHromadnik
+
 ### 0.2.0
 
 - Support for SPM and mint https://github.com/LukasHromadnik/Toggl2Redmine/pull/3 by @fortmarek
