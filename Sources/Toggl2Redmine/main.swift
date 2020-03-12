@@ -67,12 +67,12 @@ togglTimeEntries.forEach { entry in
     if let issue = redmineEntries[spentOn]?.first(where: { $0.issueID == issueID }) {
         issue.duration += entry.duration
         if let comment = entry.comment {
-            issue.comments.append(comment)
+            issue.addComment(comment)
         }
     } else {
         let issue = RedmineEntry(issueID: issueID, duration: entry.duration, spentOn: spentOn)
         if let comment = entry.comment {
-            issue.comments.append(comment)
+            issue.addComment(comment)
         }
         redmineEntries[spentOn]?.append(issue)
     }

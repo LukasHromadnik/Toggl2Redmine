@@ -20,12 +20,18 @@ class RedmineEntry {
         self.comments = comments
         self.spentOn = spentOn
     }
+
+    func addComment(_ comment: String) {
+        guard comments.contains(comment) == false else { return }
+        comments.append(comment)
+    }
 }
 
 extension RedmineEntry {
     var hours: Double {
         Double(duration) / 3600
     }
+
     var formattedComments: String {
         comments.isEmpty ? "" : comments.joined(separator: ", ")
     }
