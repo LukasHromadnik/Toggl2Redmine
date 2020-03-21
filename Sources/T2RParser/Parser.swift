@@ -10,6 +10,8 @@ public protocol Parsing {
 }
 
 public final class Parser: Parsing {
+    public static var shared: Parsing = Parser()
+    
     public func parseTogglEntries() -> (
         redmineEntries: [String: [RedmineEntry]],
         togglEntries: [String: [TogglEntry]]

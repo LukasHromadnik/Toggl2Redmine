@@ -8,6 +8,8 @@ public protocol RedmineUploading {
 }
 
 public final class RedmineUploader: RedmineUploading {
+    public static var shared: RedmineUploading = RedmineUploader()
+    
     public func uploadRedmineEntries(_ redmineEntries: [String: [RedmineEntry]],
                                      sortedTogglEntries: [String: [TogglEntry]]) {
         let kAutotrackerTag = "autotracker"
