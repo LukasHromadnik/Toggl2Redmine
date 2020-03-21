@@ -6,9 +6,9 @@
 //  Copyright © 2020 Lukáš Hromadník. All rights reserved.
 //
 
-struct Credentials {
-    let redmineToken: String
-    let togglToken: String
+public struct Credentials {
+    public let redmineToken: String
+    public let togglToken: String
 }
 
 extension Credentials: Codable {
