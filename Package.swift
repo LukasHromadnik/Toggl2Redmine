@@ -19,14 +19,10 @@ let package = Package(
         ),
         .target(
             name: "T2RKit",
-            dependencies: ["ArgumentParser", "T2RParser", "T2RUploader"]
+            dependencies: ["ArgumentParser", "T2RConverter"]
         ),
         .target(
-            name: "T2RParser",
-            dependencies: ["T2RSupport", "T2RCore"]
-        ),
-        .target(
-            name: "T2RUploader",
+            name: "T2RConverter",
             dependencies: ["T2RSupport", "T2RCore"]
         ),
         .target(

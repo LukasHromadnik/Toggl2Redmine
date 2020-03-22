@@ -1,7 +1,6 @@
 import Foundation
 import ArgumentParser
-import T2RParser
-import T2RUploader
+import T2RConverter
 
 public struct T2RCommand: ParsableCommand {
     public init() { }
