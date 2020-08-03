@@ -22,7 +22,7 @@ let todayComponents = calendar.dateComponents([.month, .year], from: today)
 
 guard let year = todayComponents.year, let month = todayComponents.month else { exit(0) }
 
-let startDate = createTogglFormattedDate(forYear: year, month: month)
+let startDate = createTogglFormattedDate(forYear: year, month: month - 1)
 let endDate = createTogglFormattedDate(forYear: year, month: month + 1)
 
 // Fetch time entries within given date range
