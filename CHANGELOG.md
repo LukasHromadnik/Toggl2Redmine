@@ -4,6 +4,15 @@ Please, check out guidelines: https://keepachangelog.com/en/1.0.0/
 
 ## Next
 
+### 0.3.2
+
+- Increase the tracking date range
+
+### 0.3.1
+
+- Fix mapping of Toggle entries when description is empty
+- Remove duplicate comments from Redmine entry
+
 ### 0.3.0
 
 - Fix issue where currently running Toggl's entry is marked as synchronized ([#4](https://github.com/LukasHromadnik/Toggl2Redmine/issues/4), kudos to @LukasHromadnik)
