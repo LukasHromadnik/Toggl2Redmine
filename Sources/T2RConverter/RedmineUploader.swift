@@ -3,15 +3,13 @@ import T2RSupport
 import Foundation
 
 public protocol RedmineUploading {
-    func uploadRedmineEntries(_ redmineEntries: [String: [RedmineEntry]],
-                              sortedTogglEntries: [String: [TogglEntry]])
+    func uploadRedmineEntries(_ redmineEntries: [String: [RedmineEntry]], sortedTogglEntries: [String: [TogglEntry]])
 }
 
 public final class RedmineUploader: RedmineUploading {
     public static var shared: RedmineUploading = RedmineUploader()
     
-    public func uploadRedmineEntries(_ redmineEntries: [String: [RedmineEntry]],
-                                     sortedTogglEntries: [String: [TogglEntry]]) {
+    public func uploadRedmineEntries(_ redmineEntries: [String: [RedmineEntry]], sortedTogglEntries: [String: [TogglEntry]]) {
         let kAutotrackerTag = "autotracker"
         
         // Load credentials
