@@ -15,23 +15,11 @@ let package = Package(
     targets: [
         .target(
             name: "t2r",
-            dependencies: ["T2RKit"]
+            dependencies: ["Toggl2RedmineCore", "ArgumentParser"]
         ),
         .target(
-            name: "T2RKit",
-            dependencies: ["ArgumentParser", "T2RConverter"]
-        ),
-        .target(
-            name: "T2RConverter",
-            dependencies: ["T2RSupport", "T2RCore"]
-        ),
-        .target(
-            name: "T2RSupport",
+            name: "Toggl2RedmineCore",
             dependencies: []
-        ),
-        .target(
-            name: "T2RCore",
-            dependencies: []
-        ),
+        )
     ]
 )

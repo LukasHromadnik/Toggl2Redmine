@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension URLRequest {
+extension URLRequest {
 
     /// Adds basic authorization header to the request
     ///

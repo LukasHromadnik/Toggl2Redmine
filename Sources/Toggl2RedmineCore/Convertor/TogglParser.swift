@@ -1,21 +1,13 @@
 import Foundation
-import T2RCore
-import T2RSupport
 
-public protocol Parsing {
-    func parseTogglEntries() -> (
-        redmineEntries: [String: [RedmineEntry]],
-        togglEntries: [String: [TogglEntry]]
-    )
+public protocol TogglParsing {
+    func parseEntries() -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]])
 }
 
-public final class Parser: Parsing {
-    public static var shared: Parsing = Parser()
+public final class TogglParser: TogglParsing {
+    public static var shared = TogglParser()
     
-    public func parseTogglEntries() -> (
-        redmineEntries: [String: [RedmineEntry]],
-        togglEntries: [String: [TogglEntry]]
-    ) {
+    public func parseEntries() -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]]) {
         // Load credentials
         let credentialsURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".t2r/credentials.json")
         let data = try! Data(contentsOf: credentialsURL)

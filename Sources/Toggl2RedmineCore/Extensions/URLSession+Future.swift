@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension URLSession {
+extension URLSession {
     func request(_ request: URLRequest) -> Future<Data> {
         // We'll start by constructing a Promise, that will later be
         // returned as a Future:
