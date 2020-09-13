@@ -81,7 +81,5 @@ public final class RedmineUploader: RedmineUploading {
                 _ = URLSession.shared.request(request).synchronize()
             }
         }
-
-        print("Done")
     }
 }

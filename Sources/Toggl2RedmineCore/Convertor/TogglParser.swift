@@ -1,27 +1,23 @@
 import Foundation
 
 public protocol TogglParsing {
-    func parseEntries() -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]])
+    func parseEntries(within dateRange: ClosedRange<Date>) -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]])
 }
 
 public final class TogglParser: TogglParsing {
     public static var shared = TogglParser()
     
-    public func parseEntries() -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]]) {
+    public func parseEntries(within dateRange: ClosedRange<Date>) -> (redmineEntries: [String: [RedmineEntry]], togglEntries: [String: [TogglEntry]]) {
         // Load credentials
         let credentialsURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".t2r/credentials.json")
         let data = try! Data(contentsOf: credentialsURL)
         let credentials = try! JSONDecoder().decode(Credentials.self, from: data)
 
         // Create a date range for time entries based on the current date
-        let today = Date()
-        let calendar = Calendar.current
-        let todayComponents = calendar.dateComponents([.month, .year], from: today)
-
-        guard let year = todayComponents.year, let month = todayComponents.month else { exit(0) }
-
-        let startDate = createTogglFormattedDate(forYear: year, month: month - 1)
-        let endDate = createTogglFormattedDate(forYear: year, month: month + 1)
+        guard
+            let startDate = dateRange.lowerBound.togglFormattedString(),
+            let endDate = dateRange.upperBound.togglFormattedString()
+        else { return (redmineEntries: [:], togglEntries: [:]) }
 
         // Fetch time entries within given date range
         var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://www.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
@@ -40,13 +36,8 @@ public final class TogglParser: TogglParsing {
             guard entry.isValid, let issueID = entry.issueID else { return }
 
             // Create date identifier for the current entry `YYYY-MM-dd`
-            let components = calendar.dateComponents([.year, .month, .day], from: entry.start)
-            guard
-                let entryYear = components.year,
-                let entryMonth = components.month,
-                let entryDay = components.day,
-                let dateIdentifier = createTogglFormattedDate(forYear: entryYear, month: entryMonth, day: entryDay).split(separator: "T").first
-            else { return }
+            let components = Calendar.current.dateComponents([.year, .month, .day], from: entry.start)
+            guard let dateIdentifier = components.date?.togglFormattedString()?.split(separator: "T").first else { return }
 
             // Just case the `Substring` to `String`
             let spentOn = String(dateIdentifier)
