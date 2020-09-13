@@ -8,23 +8,23 @@
 import Foundation
 
 extension Date {
-    func startOfDay(for calendar: Calendar = .current) -> Date {
+    public func startOfDay(for calendar: Calendar = .current) -> Date {
         calendar.startOfDay(for: self)
     }
 
-    func endOfDay(for calendar: Calendar = .current) -> Date {
+    public func endOfDay(for calendar: Calendar = .current) -> Date {
         var components = DateComponents()
         components.day = 1
         components.second = -1
         return calendar.date(byAdding: components, to: startOfDay())!
     }
 
-    func startOfMonth(for calendar: Calendar = .current) -> Date {
+    public func startOfMonth(for calendar: Calendar = .current) -> Date {
         let components = calendar.dateComponents([.year, .month], from: startOfDay())
         return calendar.date(from: components)!
     }
 
-    func endOfMonth(for calendar: Calendar = .current) -> Date {
+    public func endOfMonth(for calendar: Calendar = .current) -> Date {
         var components = DateComponents()
         components.month = 1
         components.second = -1
@@ -32,7 +32,7 @@ extension Date {
     }
     
     /// Formatted date that can be used in the Toggl's time entries request
-    func togglFormattedString(for calendar: Calendar = .current) -> String? {
+    public func togglFormattedString(for calendar: Calendar = .current) -> String? {
         let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: self)
         
         guard

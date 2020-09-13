@@ -7,14 +7,14 @@ let package = Package(
     name: "Toggl2Redmine",
     platforms: [.macOS(.v10_12)],
     products: [
-        .executable(name: "t2r", targets: ["Toggl2RedmineCLI"])
+        .executable(name: "t2r", targets: ["Toggl2Redmine"])
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser", .upToNextMinor(from: "0.3.0"))
     ],
     targets: [
         .target(
-            name: "Toggl2RedmineCLI",
+            name: "Toggl2Redmine",
             dependencies: ["Toggl2RedmineCore", "ArgumentParser"]
         ),
         .target(
