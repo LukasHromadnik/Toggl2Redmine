@@ -36,8 +36,7 @@ public final class TogglParser: TogglParsing {
             guard entry.isValid, let issueID = entry.issueID else { return }
 
             // Create date identifier for the current entry `YYYY-MM-dd`
-            let components = Calendar.current.dateComponents([.year, .month, .day], from: entry.start)
-            guard let dateIdentifier = components.date?.togglFormattedString()?.split(separator: "T").first else { return }
+            guard let dateIdentifier = entry.start.togglFormattedString()?.components(separatedBy: "T").first else { return }
 
             // Just case the `Substring` to `String`
             let spentOn = String(dateIdentifier)

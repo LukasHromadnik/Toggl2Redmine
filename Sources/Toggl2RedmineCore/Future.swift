@@ -93,6 +93,7 @@ public extension Future {
         }
     }
 
+    @discardableResult
     func synchronize() -> Value? {
         let semaphore = DispatchSemaphore(value: 0)
         var result: Value?

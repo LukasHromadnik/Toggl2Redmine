@@ -16,7 +16,7 @@ extension URLSession {
 
         // Perform a data task, just like we normally would:
         let task = dataTask(with: request) { data, response, error in
-            print((response as? HTTPURLResponse)?.statusCode ?? 000, request.url!.absoluteString)
+            Console.shared.log("\((response as? HTTPURLResponse)?.statusCode ?? 000) \(request.url!.absoluteString)")
 
             // Reject or resolve the promise, depending on the result:
             if let error = error {

@@ -31,6 +31,18 @@ extension Date {
         return calendar.date(byAdding: components, to: startOfMonth())!
     }
     
+    public func startOfLastMonth(for calendar: Calendar = .current) -> Date {
+        var components = DateComponents()
+        components.month = -1
+        return calendar.date(byAdding: components, to: Date())!.startOfMonth()
+    }
+    
+    public func endOfLastMonth(for calendar: Calendar = .current) -> Date {
+        var components = DateComponents()
+        components.month = -1
+        return calendar.date(byAdding: components, to: Date())!.endOfMonth()
+    }
+    
     /// Formatted date that can be used in the Toggl's time entries request
     public func togglFormattedString(for calendar: Calendar = .current) -> String? {
         let components = calendar.dateComponents([.day, .month, .year, .hour, .minute, .second], from: self)

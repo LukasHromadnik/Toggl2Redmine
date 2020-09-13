@@ -35,11 +35,11 @@ public final class RedmineUploader: RedmineUploading {
                 request.addBasicAuth(username: credentials.togglToken, password: "api_token")
                 request.httpMethod = "PUT"
                 request.setJSONBody(params)
-
-                print("Updating " + entry.description)
+                
+                Console.shared.log("Updating " + entry.description)
 
                 // Run the request synchronously
-                _ = URLSession.shared.request(request).synchronize()
+                URLSession.shared.request(request).synchronize()
             }
 
             // Add new entries to the Redmine
@@ -75,10 +75,10 @@ public final class RedmineUploader: RedmineUploading {
                 ]
                 request.setJSONBody(params)
 
-                print("Adding time entry to the #\(entry.issueID)")
+                Console.shared.log("Adding time entry to the #\(entry.issueID)")
 
                 // Run the request synchronously
-                _ = URLSession.shared.request(request).synchronize()
+                URLSession.shared.request(request).synchronize()
             }
         }
     }
