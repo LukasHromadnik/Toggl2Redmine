@@ -18,12 +18,21 @@ let credentials = try! JSONDecoder().decode(Credentials.self, from: data)
 // Create a date range for time entries based on the current date
 let today = Date()
 let calendar = Calendar.current
-let todayComponents = calendar.dateComponents([.month, .year], from: today)
+guard let previousMonthDate = calendar.date(byAdding: .month, value: -1, to: today) else { fatalError("Unable to get previous month") }
+guard let nextMonthDate = calendar.date(byAdding: .month, value: 1, to: today) else { fatalError("Unable to get next month") }
 
-guard let year = todayComponents.year, let month = todayComponents.month else { exit(0) }
+let previousMonthComponents = calendar.dateComponents([.month, .year], from: previousMonthDate)
+let nextMonthComponents = calendar.dateComponents([.month, .year], from: nextMonthDate)
 
-let startDate = createTogglFormattedDate(forYear: year, month: month - 1)
-let endDate = createTogglFormattedDate(forYear: year, month: month + 1)
+guard
+    let previousYear = previousMonthComponents.year,
+    let previousMonth = previousMonthComponents.month,
+    let nextYear = nextMonthComponents.year,
+    let nextMonth = nextMonthComponents.month
+else { fatalError("Unable to load components from dates") }
+
+let startDate = createTogglFormattedDate(forYear: previousYear, month: previousMonth)
+let endDate = createTogglFormattedDate(forYear: nextYear, month: nextMonth)
 
 // Fetch time entries within given date range
 var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://www.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
