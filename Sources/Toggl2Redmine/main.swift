@@ -35,7 +35,7 @@ let startDate = createTogglFormattedDate(forYear: previousYear, month: previousM
 let endDate = createTogglFormattedDate(forYear: nextYear, month: nextMonth)
 
 // Fetch time entries within given date range
-var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://www.api.track.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
+var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
 togglTimeEntriesRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
 let decoder = JSONDecoder()
 decoder.dateDecodingStrategy = .iso8601
@@ -103,7 +103,7 @@ redmineEntries.forEach { value in
         let params = ["time_entry": ["tags": tags]]
 
         // Create request for the update
-        var request = URLRequest(url: URL(string: "https://www.api.track.toggl.com/api/v8/time_entries/\(entry.id)")!)
+        var request = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v8/time_entries/\(entry.id)")!)
         request.addBasicAuth(username: credentials.togglToken, password: "api_token")
         request.httpMethod = "PUT"
         request.setJSONBody(params)
