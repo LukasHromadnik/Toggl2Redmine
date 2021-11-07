@@ -12,9 +12,15 @@ let package = Package(
     targets: [
         .target(
             name: "Toggl2Redmine",
+            dependencies: ["Toggl2RedmineCore"]),
+        .target(
+            name: "Toggl2RedmineCore",
             dependencies: []),
         .testTarget(
             name: "Toggl2RedmineTests",
             dependencies: ["Toggl2Redmine"]),
+        .testTarget(
+            name: "Toggl2RedmineCoreTests",
+            dependencies: ["Toggl2RedmineCore"]),
     ]
 )

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Toggl2RedmineCore
 
 let kAutotrackerTag = "autotracker"
 
