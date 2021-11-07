@@ -53,7 +53,6 @@ public extension TogglEntry {
     }
 
     var isValid: Bool {
-//        issueID != nil && tags.contains(kSynchronizedTag) == false && duration > 0
-        issueID != nil && tags.contains(kSynchronizedTag) == false && duration > 0
+        issueID != nil && tags.contains { $0.lowercased() == kSynchronizedTag.lowercased() } == false && duration > 0
     }
 }
