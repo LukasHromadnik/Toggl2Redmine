@@ -8,18 +8,26 @@
 
 import Foundation
 
-let kSynchronizedTag = "Synchronized"
+public let kSynchronizedTag = "Synchronized"
 
-struct TogglEntry {
-    let id: Int
-    let description: String
-    let start: Date
-    let duration: Int
-    let tags: [String]
+public struct TogglEntry {
+    public let id: Int
+    public let description: String
+    public let start: Date
+    public let duration: Int
+    public let tags: [String]
+    
+    public init(id: Int, description: String, start: Date, duration: Int, tags: [String]) {
+        self.id = id
+        self.description = description
+        self.start = start
+        self.duration = duration
+        self.tags = tags
+    }
 }
 
 extension TogglEntry: Codable {
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try! decoder.container(keyedBy: CodingKeys.self)
         id = try! container.decode(Int.self, forKey: .id)
         let description = try! container.decodeIfPresent(String.self, forKey: .description)
@@ -31,7 +39,7 @@ extension TogglEntry: Codable {
     }
 }
 
-extension TogglEntry {
+public extension TogglEntry {
     var issueID: Int? {
         let pattern = "#([0-9]+):"
         guard let range = description.range(of: pattern, options: .regularExpression) else { return nil }
@@ -45,6 +53,7 @@ extension TogglEntry {
     }
 
     var isValid: Bool {
+//        issueID != nil && tags.contains(kSynchronizedTag) == false && duration > 0
         issueID != nil && tags.contains(kSynchronizedTag) == false && duration > 0
     }
 }

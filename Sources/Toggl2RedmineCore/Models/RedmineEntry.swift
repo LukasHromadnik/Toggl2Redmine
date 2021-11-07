@@ -8,26 +8,26 @@
 
 import Foundation
 
-class RedmineEntry {
-    let issueID: Int
-    var duration: Int
-    var comments: [String]
-    let spentOn: String
+public class RedmineEntry {
+    public let issueID: Int
+    public var duration: Int
+    public var comments: [String]
+    public let spentOn: String
 
-    init(issueID: Int, duration: Int = 0, comments: [String] = [], spentOn: String) {
+    public init(issueID: Int, duration: Int = 0, comments: [String] = [], spentOn: String) {
         self.issueID = issueID
         self.duration = duration
         self.comments = comments
         self.spentOn = spentOn
     }
 
-    func addComment(_ comment: String) {
+    public func addComment(_ comment: String) {
         guard comments.contains(comment) == false else { return }
         comments.append(comment)
     }
 }
 
-extension RedmineEntry {
+public extension RedmineEntry {
     var hours: Double {
         Double(duration) / 3600
     }
@@ -38,7 +38,7 @@ extension RedmineEntry {
 }
 
 extension RedmineEntry: CustomStringConvertible {
-    var description: String {
+    public var description: String {
         "\(issueID): \(hours) (\(duration) m), \(formattedComments), \(spentOn)"
     }
 }
