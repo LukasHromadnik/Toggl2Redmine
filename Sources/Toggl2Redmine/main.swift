@@ -36,7 +36,7 @@ let startDate = createTogglFormattedDate(forYear: previousYear, month: previousM
 let endDate = createTogglFormattedDate(forYear: nextYear, month: nextMonth)
 
 // Fetch time entries within given date range
-var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
+var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/me/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
 togglTimeEntriesRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
 let decoder = JSONDecoder()
 decoder.dateDecodingStrategy = .iso8601
