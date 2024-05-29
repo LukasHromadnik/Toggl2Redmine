@@ -16,10 +16,24 @@ let credentialsURL = FileManager.default.homeDirectoryForCurrentUser.appendingPa
 let data = try! Data(contentsOf: credentialsURL)
 let credentials = try! JSONDecoder().decode(Credentials.self, from: data)
 
+struct TogglMe: Decodable {
+    let defaultWorkspaceId: Int
+}
+
+var togglMeRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/me")!)
+togglMeRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
+let decoder = JSONDecoder()
+decoder.dateDecodingStrategy = .iso8601
+decoder.keyDecodingStrategy = .convertFromSnakeCase
+guard
+    let togglMe: TogglMe = URLSession.shared.request(togglMeRequest).decoded(using: decoder).synchronize()
+else { fatalError("Cannot fetch user from Toggl") }
+let defaultworksapceId = togglMe.defaultWorkspaceId
+
 // Create a date range for time entries based on the current date
 let today = Date()
 let calendar = Calendar.current
-guard let previousMonthDate = calendar.date(byAdding: .month, value: -1, to: today) else { fatalError("Unable to get previous month") }
+guard let previousMonthDate = calendar.date(byAdding: .day, value: -1, to: today) else { fatalError("Unable to get previous month") }
 guard let nextMonthDate = calendar.date(byAdding: .month, value: 1, to: today) else { fatalError("Unable to get next month") }
 
 let previousMonthComponents = calendar.dateComponents([.month, .year], from: previousMonthDate)
@@ -36,10 +50,8 @@ let startDate = createTogglFormattedDate(forYear: previousYear, month: previousM
 let endDate = createTogglFormattedDate(forYear: nextYear, month: nextMonth)
 
 // Fetch time entries within given date range
-var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v8/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
+var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/me/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
 togglTimeEntriesRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
-let decoder = JSONDecoder()
-decoder.dateDecodingStrategy = .iso8601
 var togglTimeEntries: [TogglEntry] = URLSession.shared.request(togglTimeEntriesRequest).decoded(using: decoder).synchronize() ?? []
 
 // Cluster time entries and create a Redmine entry for each cluster
@@ -101,10 +113,10 @@ redmineEntries.forEach { value in
         let tags = Array(Set(entry.tags + [kSynchronizedTag, kAutotrackerTag]))
 
         // Create request's body
-        let params = ["time_entry": ["tags": tags]]
+        let params = ["tags": tags]
 
         // Create request for the update
-        var request = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v8/time_entries/\(entry.id)")!)
+        var request = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/workspaces/\(defaultworksapceId)/time_entries/\(entry.id)")!)
         request.addBasicAuth(username: credentials.togglToken, password: "api_token")
         request.httpMethod = "PUT"
         request.setJSONBody(params)
