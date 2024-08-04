@@ -33,7 +33,7 @@ let defaultworksapceId = togglMe.defaultWorkspaceId
 // Create a date range for time entries based on the current date
 let today = Date()
 let calendar = Calendar.current
-guard let previousMonthDate = calendar.date(byAdding: .day, value: -1, to: today) else { fatalError("Unable to get previous month") }
+guard let previousMonthDate = calendar.date(byAdding: .month, value: -1, to: today) else { fatalError("Unable to get previous month") }
 guard let nextMonthDate = calendar.date(byAdding: .month, value: 1, to: today) else { fatalError("Unable to get next month") }
 
 let previousMonthComponents = calendar.dateComponents([.month, .year], from: previousMonthDate)
