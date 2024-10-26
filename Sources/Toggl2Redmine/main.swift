@@ -1,27 +1,20 @@
-//
-//  main.swift
-//  Toggl2Redmine
-//
-//  Created by Lukáš Hromadník on 03/03/2020.
-//  Copyright © 2020 Lukáš Hromadník. All rights reserved.
-//
-
 import Foundation
 import Toggl2RedmineCore
 
 let kAutotrackerTag = "autotracker"
 
-// Load credentials
-let credentialsURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".t2r/credentials.json")
-let data = try! Data(contentsOf: credentialsURL)
-let credentials = try! JSONDecoder().decode(Credentials.self, from: data)
+// Load configuration
+let configurationUrl = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".t2r/credentials.json")
+let data = try! Data(contentsOf: configurationUrl)
+let configuration = try! JSONDecoder().decode(Configuration.self, from: data)
+let nonGroupingTickets = configuration.nonGroupingTickets ?? []
 
 struct TogglMe: Decodable {
     let defaultWorkspaceId: Int
 }
 
 var togglMeRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/me")!)
-togglMeRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
+togglMeRequest.addBasicAuth(username: configuration.togglToken, password: "api_token")
 let decoder = JSONDecoder()
 decoder.dateDecodingStrategy = .iso8601
 decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -51,7 +44,7 @@ let endDate = createTogglFormattedDate(forYear: nextYear, month: nextMonth)
 
 // Fetch time entries within given date range
 var togglTimeEntriesRequest = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/me/time_entries?start_date=\(startDate)&end_date=\(endDate)")!)
-togglTimeEntriesRequest.addBasicAuth(username: credentials.togglToken, password: "api_token")
+togglTimeEntriesRequest.addBasicAuth(username: configuration.togglToken, password: "api_token")
 var togglTimeEntries: [TogglEntry] = URLSession.shared.request(togglTimeEntriesRequest).decoded(using: decoder).synchronize() ?? []
 
 // Cluster time entries and create a Redmine entry for each cluster
@@ -75,8 +68,8 @@ togglTimeEntries.forEach { entry in
     // Just case the `Substring` to `String`
     let spentOn = String(dateIdentifier)
 
-    // Initialize the dictionary for the given date if needed
-    // Also initialize the dictionary for sorted entries
+    // Initialize the dictionary for the given date if needed.
+    // Also initialize the dictionary for sorted entries.
     if redmineEntries[spentOn] == nil {
         redmineEntries[spentOn] = []
         sortedTogglEntries[spentOn] = []
@@ -85,8 +78,18 @@ togglTimeEntries.forEach { entry in
     // Add the entry to the given key in the `sortedTogglEntries`
     sortedTogglEntries[spentOn]?.append(entry)
 
+    if nonGroupingTickets.contains(issueID) {
+        let comments = entry.comment.map { [$0] } ?? []
+        let issue = RedmineEntry(
+            issueID: issueID,
+            duration: entry.duration,
+            comments: comments,
+            spentOn: spentOn
+        )
+        redmineEntries[spentOn]?.append(issue)
+    }
     // Load and update the issue or create a new one
-    if let issue = redmineEntries[spentOn]?.first(where: { $0.issueID == issueID }) {
+    else if let issue = redmineEntries[spentOn]?.first(where: { $0.issueID == issueID }) {
         issue.duration += entry.duration
         if let comment = entry.comment {
             issue.addComment(comment)
@@ -117,7 +120,7 @@ redmineEntries.forEach { value in
 
         // Create request for the update
         var request = URLRequest(url: URL(string: "https://api.track.toggl.com/api/v9/workspaces/\(defaultworksapceId)/time_entries/\(entry.id)")!)
-        request.addBasicAuth(username: credentials.togglToken, password: "api_token")
+        request.addBasicAuth(username: configuration.togglToken, password: "api_token")
         request.httpMethod = "PUT"
         request.setJSONBody(params)
 
@@ -134,7 +137,7 @@ redmineEntries.forEach { value in
         var request = URLRequest(url: URL(string: "https://redmine.ack.ee/time_entries.json")!)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = [
-            "X-Redmine-API-Key": credentials.redmineToken,
+            "X-Redmine-API-Key": configuration.redmineToken,
             // Without this the request will fail
             "Content-Type": "application/json"
         ]
